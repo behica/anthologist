@@ -4,6 +4,9 @@
     <div class="media-body">
       <h4 class="media-heading">
         <%= link_to story.title, story %>
+        <% if current_user %>
+    	    <%= render partial: 'collections/collect', class: 'pull-right', locals: { story: story } %>
+		    <% end %>
       </h4>
     </div>
   </div>

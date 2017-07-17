@@ -10,7 +10,10 @@ Rails.application.routes.draw do
         get :cancel
       end
   end
-  resources :stories
-
+  
+  resources :stories do
+    resources :collections, only: [:create, :destroy]
+  end
+  
   root 'welcome#index'
 end
