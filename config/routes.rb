@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     resources :collections, only: [:create, :destroy]
   end
   
+  get 'collection' => 'collections#index'
+  
   root 'welcome#index'
 end

@@ -1,0 +1,14 @@
+<h1>My Collection</h1>
+<% if current_user.collections.empty? %>
+	<p>You have not added any items to your collection yet.</p>
+<% else %>
+	<% current_user.collections.each do |collection| %>
+	  <div class="media">
+	    <div class="media-body">
+	      <h4 class="media-heading">
+	      	<%= link_to collection.story.title, collection.story %>
+	    	</h4>
+	  	</div>
+		</div>
+	<% end %>
+<% end %>

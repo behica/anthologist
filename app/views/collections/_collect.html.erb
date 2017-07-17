@@ -1,9 +1,9 @@
 <% if collect = current_user.collection_for(story) %>
 	<%= link_to [story, collect], class: 'btn btn-danger btn-sm', method: :delete do %>
-		<span class="glyphicon glyphicon-heart"> </span>&nbsp; Remove from Collection
+		<span class="glyphicon glyphicon-heart"></span>
 	<% end %>
 <% else %>
 	<%= link_to [story, Collection.new], class: 'btn btn-default btn-sm', method: :story do %>
-		<span class="glyphicon glyphicon-heart-empty"> </span>&nbsp; Add to Collection
+		<span class="glyphicon glyphicon-heart-empty"></span>
 	<% end %>
 <% end %>
