@@ -23,7 +23,7 @@ class CollectionsController < ApplicationController
     else
        flash[:alert] = "Something went wrong. Try again."
 		end
-    
+		
     redirect_to :back
 	end
 end
