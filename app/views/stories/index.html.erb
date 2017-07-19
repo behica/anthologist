@@ -5,7 +5,10 @@
       <div class="thumbnail">
         <%= link_to image_tag("http://via.placeholder.com/125x200"), story %>
         <div class="caption text-center">
-          <%= link_to story.title, story %>
+          <p><%= link_to story.title, story %></p>
+          <% if current_user %>
+            <p><%= render partial: 'collections/collect', class: 'pull-right', locals: { story: story } %></p>
+          <% end %>
         </div>
       </div>
     </div>
