@@ -19,10 +19,10 @@ user2.save!
 users = User.all
 
 25.times do
-	Story.create!(
-		title:	Faker::Book.title,
-		body: 	Faker::Lorem.paragraph
-		)
+  Story.create!(
+    title:	Faker::Book.title,
+    body: 	Faker::Lorem.paragraph
+    )
 end
 
 puts "Seed finished"
