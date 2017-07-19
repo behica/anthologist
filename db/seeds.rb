@@ -21,7 +21,7 @@ users = User.all
 25.times do
   Story.create!(
     title:	Faker::Book.title,
-    body: 	Faker::Lorem.paragraph
+    body: 	Faker::Lorem.paragraphs(20).join('<p>').html_safe
     )
 end
 
