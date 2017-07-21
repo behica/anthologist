@@ -26,4 +26,9 @@ class CollectionsController < ApplicationController
     
     redirect_to :back
   end
+  
+  
+  def index
+  	@user_collections = current_user.collections
+  end
 end

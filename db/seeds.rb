@@ -16,12 +16,16 @@ user2 = User.new(
 user2.skip_confirmation!
 user2.save!
 
-users = User.all
+users = ['member@example.com', 'admin@example.com']
+genres = ['Crime', 'Fan fiction', 'Fantasy', 'Mystery', 'Romance', 
+    'Sci-fi', 'Western', 'Horror']
 
 25.times do
   Story.create!(
     title:	Faker::Book.title,
-    body: 	Faker::Lorem.paragraphs(20).join('<p>').html_safe
+    body: 	Faker::Lorem.paragraphs(20).join('<p>').html_safe,
+    genre: genres.sample,
+    author: users.sample
     )
 end
 

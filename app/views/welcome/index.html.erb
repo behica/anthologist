@@ -2,10 +2,14 @@
 <div class="jumbotron">
   <h1>Shorties</h1>
   <p>Shorties is your place to read, write, and collect short stories from our community.</p>
-  <p>
-    <%= link_to "Sign In", new_user_session_path %> or
-    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
-  </p>
+  <% if user_signed_in? %>
+    <p>Welcome back.</p>
+  <% else %>
+    <p>
+      <%= link_to "Sign In", new_user_session_path %> or
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+    </p>
+  <% end %>
 </div>
 
 <div class="row">

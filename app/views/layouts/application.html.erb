@@ -11,7 +11,8 @@
   <div class="container">
     <ul class="nav nav-tabs">
       <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Stories", stories_path %></li>
+      <li><%= link_to "Read", stories_path %></li>
+      <li><%= link_to "Write", new_story_path %></li>
       <li><%= link_to "Collection", collection_path %></li>
       <div class="pull-right user-info">
         <% if user_signed_in? %>

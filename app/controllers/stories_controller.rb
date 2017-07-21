@@ -1,23 +1,28 @@
 class StoriesController < ApplicationController
+  before_action :authenticate_user!, :except => [:show, :index]
+  
   def index
     @stories = Story.all
   end
 
   def show
     @story = Story.find(params[:id])
+    
   end
 
   def new
     @story = Story.new
+    # @genres = ['Crime', 'Fan fiction', 'Fantasy', 'Mystery', 'Romance', 'Sci-fi', 'Western', 'Horror']
   end
   
   def create
     @story = Story.new(story_params)
+    @story.author = current_user.email
     
     if @story.save
       redirect_to @story, notice: "Your story has been saved."
     else
-      flash.now[:alert] = "Error creating story. Please try again."
+      flash.now[:alert] = "Something went wrong creating your story. Please try again."
       render :new
     end
   end  
@@ -33,7 +38,7 @@ class StoriesController < ApplicationController
     if @story.save
       redirect_to @story, notice: "Your story has been updated."
     else
-      flash.now[:alert] = "Error updating story. Please try again."
+      flash.now[:alert] = "Something went wrong with the update. Please try again."
       render :new
     end
   end

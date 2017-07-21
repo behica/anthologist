@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :stories
   has_many :collections, dependent: :destroy
   
-  def collection_for(story)
+  def collection_check(story)
     collections.where(story_id: story.id).first
   end
 end
