@@ -5,7 +5,7 @@
     <p>Story Guidelines</p>
   </div>
   <div class="col-md-8">
-    <%= form_for @story do |f| %>
+    <%= form_for(@story, multipart: true) do |f| %>
       <% if @story.errors.any? %>
         <div class="alert alert-danger">
           <h4><%= pluralize(@story.errors.count, "error") %>.</h4>
@@ -28,6 +28,11 @@
           <%= f.label :genre %>
           <%= f.select :genre, @story.genres, prompt: "Choose a genre" %>
           <%= f.submit "Save", class: 'btn btn-success pull-right' %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label "Upload Cover Art" %>
+          <%= f.file_field :cover, class: 'btn btn-default' %>
         </div>
         
         <div class="form-group">
