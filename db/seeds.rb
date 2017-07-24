@@ -16,19 +16,22 @@ user2 = User.new(
 user2.skip_confirmation!
 user2.save!
 
-users = ['member@example.com', 'admin@example.com']
+users = User.all
 genres = ['Crime', 'Fan fiction', 'Fantasy', 'Mystery', 'Romance', 
     'Sci-fi', 'Western', 'Horror']
 
 25.times do
-  Story.create!(
+  story = Story.create!(
     title:	Faker::Book.title,
     body: 	Faker::Lorem.paragraphs(20).join('<p>').html_safe,
-    genre: genres.sample,
+    genre:  genres.sample,
     author: users.sample
     )
+  
+  rand(0..1).times { story.ratings.create!(value: 1, user: users.sample) }
 end
 
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Story.count} stories created"
+puts "#{Rating.count} ratings created"

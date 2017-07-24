@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :stories
   has_many :comments
   has_many :collections, dependent: :destroy
+  has_many :ratings, dependent: :destroy
   
   def collection_check(story)
     collections.where(story_id: story.id).first
