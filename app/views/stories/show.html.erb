@@ -5,6 +5,14 @@
 <div class="row">
   <div class="col-md-8 text-justify">
     <p><%= @story.body.html_safe %></p>
+    
+    <div>
+     <h3>Comments</h3>
+     <%= render @story.comments %>
+    </div>
+    <% if current_user %>
+      <%= render 'comments/form', comment: Comment.new, story: @story %>
+    <% end %>
   </div>
   <div class="col-md-4">
       <p><%= link_to "Edit", edit_story_path(@story), class: 'btn btn-success' %>

@@ -1,5 +1,7 @@
 class Story < ActiveRecord::Base
+  belongs_to :user
   has_many :collections, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   has_attached_file :cover,
   :storage => :s3,

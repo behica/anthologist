@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   resources :stories do
     resources :collections, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   
   get 'collection' => 'collections#index'

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
   has_many :stories
+  has_many :comments
   has_many :collections, dependent: :destroy
   
   def collection_check(story)
