@@ -25,7 +25,8 @@ genres = ['Crime', 'Fan fiction', 'Fantasy', 'Mystery', 'Romance',
     title:	Faker::Book.title,
     body: 	Faker::Lorem.paragraphs(20).join('<p>').html_safe,
     genre:  genres.sample,
-    author: users.sample
+    author: users.sample.email,
+    user: users.sample
     )
   
   rand(0..1).times { story.ratings.create!(value: 1, user: users.sample) }

@@ -1,13 +1,14 @@
 <h1>List of Stories</h1>
 <div class="row">
   <% @stories.each do |story| %>
-    <div class="col-md-3 col-sm-4">
+    <div class="col-md-3 col-xs-6">
       <div class="thumbnail">
         <%= link_to image_tag(story.cover.url(:thumb)), story %>
         <div class="caption text-center">
-          <p><%= link_to story.title, story %></p>
+          <h5><%= link_to truncate(story.title), story, title: story.title %></h5>
           <% if current_user %>
             <p><%= render partial: 'collections/collect', class: 'pull-right', locals: { story: story } %></p>
+            <%= render partial: 'ratings/rate', locals: { story: story } %>
           <% end %>
         </div>
       </div>

@@ -18,6 +18,7 @@ class Story < ActiveRecord::Base
   validates :body, length: {minimum: 5, too_short: "Your story must be at least %{count} words long.", maximum: 8000, too_long: "Your story must not exceed %{count} words.", presence: true, tokenizer: ->(str) { str.scan(/\w+/) } }
   validates :genre, presence: true
   validates :author, presence: true
+  validates :user, presence: true
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
   
   def genres
