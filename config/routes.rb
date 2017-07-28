@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   
   get 'collection' => 'collections#index'
   
+  get 'badges' => 'badges#index'
+  
   root 'welcome#index'
 end

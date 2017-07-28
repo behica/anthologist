@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724191046) do
+ActiveRecord::Schema.define(version: 20170728020838) do
+
+  create_table "achievements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "badge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "achievements", ["badge_id"], name: "index_achievements_on_badge_id"
+  add_index "achievements", ["user_id"], name: "index_achievements_on_user_id"
+
+  create_table "badges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "points"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "badges", ["user_id"], name: "index_badges_on_user_id"
 
   create_table "collections", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,7 +78,10 @@ ActiveRecord::Schema.define(version: 20170724191046) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "stories", ["user_id"], name: "index_stories_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

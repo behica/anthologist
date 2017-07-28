@@ -4,11 +4,12 @@
   <p>You have not added any items to your collection yet.</p>
 <% else %>
   <% @user_collections.each do |collection| %>
-    <div class="col-md-3 col-sm-4">
+    <div class="col-md-3 col-xs-6">
       <div class="thumbnail">
         <%= link_to image_tag(collection.story.cover.url(:thumb)), collection.story %>
         <div class="caption text-center">
-          <%= link_to collection.story.title, collection.story %>
+          <h5><%= link_to truncate(collection.story.title), collection.story, title: collection.story.title %></h5>
+          <p><%= render partial: 'ratings/rate', locals: { story: collection.story } %></p>
         </div>
       </div>
     </div>
