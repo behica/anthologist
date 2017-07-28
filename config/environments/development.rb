@@ -38,7 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 }
+  config.action_mailer.default_url_options = { host: 'https://shortstory-behica.c9users.io/' }
   
   # AWS Development settings
   config.paperclip_defaults = {

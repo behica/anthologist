@@ -18,6 +18,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.author = current_user.email
+    @story.user = current_user
     
     if @story.save
       redirect_to @story, notice: "Your story has been saved."
@@ -58,6 +59,6 @@ class StoriesController < ApplicationController
   private
   
   def story_params
-    params.require(:story).permit(:title, :body, :genre, :published, :cover)
+    params.require(:story).permit(:title, :body, :genre, :published, :cover, :user)
   end
 end

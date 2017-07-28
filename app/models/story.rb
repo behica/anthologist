@@ -3,6 +3,7 @@ class Story < ActiveRecord::Base
   has_many :collections, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  after_create :check_achievement
   
   has_attached_file :cover,
   :storage => :s3,
@@ -27,5 +28,12 @@ class Story < ActiveRecord::Base
   
   def likes
     ratings.where(value: 1).count
+  end
+  
+  def check_achievement
+    stories = user.stories.count
+    user.award_badge('rookie') if stories == 1
+    user.award_badge('contributor') if stories == 5
+    user.award_badge('author') if stories == 10
   end
 end

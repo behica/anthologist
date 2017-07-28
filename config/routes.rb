@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   
   get 'collection' => 'collections#index'
   
+  get 'achievement' => 'achievements#index'
+  
   root 'welcome#index'
 end
