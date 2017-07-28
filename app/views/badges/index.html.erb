@@ -1,5 +1,17 @@
 <h1>My Badges</h1>
+<h4>You have collected <%= current_user.achievements.count %> badges!</h4>
 <div class="row">
-<% if current_user.id <= 100 %>
-  <p>You're a founder!</p>
+<% if @badges.empty? %>
+  <p>You have not received any badges yet.</p>
+<% else %>
+  <% @badges.each do |achievement| %>
+    <div class="col-md-3 col-xs-6">
+      <div class="thumbnail text-center">
+        <%= achievement.badge.name %>
+        <div class="caption text-center">
+        	<%= achievement.badge.description %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
