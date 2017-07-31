@@ -2,7 +2,12 @@ class StoriesController < ApplicationController
   before_action :authenticate_user!, :except => [:show, :index]
   
   def index
-    @stories = Story.all
+    @genres = Story.genres
+    if params[:genre]
+      @stories = Story.where(:genre => params[:genre])
+    else
+      @stories = Story.all
+    end
   end
 
   def show
@@ -12,7 +17,7 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
-    # @genres = ['Crime', 'Fan fiction', 'Fantasy', 'Mystery', 'Romance', 'Sci-fi', 'Western', 'Horror']
+    @genres = Story.genres
   end
   
   def create

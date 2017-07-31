@@ -21,8 +21,8 @@ class Story < ActiveRecord::Base
   validates :author, presence: true
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
   
-  def genres
-    @genres = ['Fan fiction', 'Fantasy', 'Mystery', 'Romance', 
+  def self.genres
+    ['Fan fiction', 'Fantasy', 'Mystery', 'Romance', 
     'Sci-fi', 'Western', 'Horror']
   end
   
