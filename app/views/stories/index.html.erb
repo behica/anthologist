@@ -1,5 +1,6 @@
 <h1>List of Stories</h1>
 <ul class="nav nav-pills">
+  <li><%= link_to "All", stories_path %></li>
   <% @genres.each do |genre| %>
   <li class="<%= 'active' if params[:genre] == genre %>">
     <%= link_to genre, stories_path(:genre=>genre)  %>
