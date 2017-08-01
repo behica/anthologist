@@ -1,12 +1,27 @@
-<h1>List of Stories</h1>
-<ul class="nav nav-pills">
-  <li><%= link_to "All", stories_path %></li>
-  <% @genres.each do |genre| %>
-  <li class="<%= 'active' if params[:genre] == genre %>">
-    <%= link_to genre, stories_path(:genre=>genre)  %>
-  <% end %>
-  </li>
-</ul>
+</br>
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <!--<div class="navbar-header">-->
+      <ul class="nav navbar-nav">
+        <li class="navbar-brand">Tier</li>
+        <li class="<%= 'active' if params[:tier].nil? %>"><%= link_to "All", stories_path(tier: nil, genre: params[:genre]) %></li>
+        <% @tiers.map do |tier, value| %>
+        <li class="<%= 'active' if params[:tier] == value.to_s %>">
+          <%= link_to tier.capitalize, stories_path(tier: value, genre: params[:genre]) %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="navbar-brand">Genre</li>
+        <li class="<%= 'active' if params[:genre].nil? %>"><%= link_to "All", stories_path(tier: params[:tier], genre: nil) %></li>
+        <% @genres.each do |genre| %>
+        <li class="<%= 'active' if params[:genre] == genre %>">
+          <%= link_to genre, stories_path(genre: genre, tier: params[:tier])  %>
+        <% end %>
+        </li>
+      </ul>
+    <!--</div>-->
+  </div>
+</div>
 <br>
 <div class="row">
   <% @stories.each do |story| %>

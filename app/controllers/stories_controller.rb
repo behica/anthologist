@@ -3,11 +3,8 @@ class StoriesController < ApplicationController
   
   def index
     @genres = Story.genres
-    if params[:genre]
-      @stories = Story.where(:genre => params[:genre])
-    else
-      @stories = Story.all
-    end
+    @tiers = Story.tiers
+    @stories = Story.by_tier_and_genre(params[:tier], params[:genre])
   end
 
   def show
@@ -64,6 +61,6 @@ class StoriesController < ApplicationController
   private
   
   def story_params
-    params.require(:story).permit(:title, :body, :genre, :published, :cover, :user)
+    params.require(:story).permit(:title, :body, :genre, :published, :cover, :user, :price, :tier)
   end
 end

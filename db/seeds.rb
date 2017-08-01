@@ -20,13 +20,27 @@ users = User.all
 genres = ['Crime', 'Fan fiction', 'Fantasy', 'Mystery', 'Romance', 
     'Sci-fi', 'Western', 'Horror']
 
-25.times do
+20.times do
   story = Story.create!(
     title:	Faker::Book.title,
     body: 	Faker::Lorem.paragraphs(20).join('<p>').html_safe,
     genre:  genres.sample,
     author: users.sample.email,
-    user:   users.sample
+    user:   users.sample,
+    price: 0
+    )
+  
+  rand(0..1).times { story.ratings.create!(value: 1, user: users.sample) }
+end
+
+10.times do
+  story = Story.create!(
+    title:	Faker::Book.title,
+    body: 	Faker::Lorem.paragraphs(20).join('<p>').html_safe,
+    genre:  genres.sample,
+    author: users.sample.email,
+    user:   users.sample,
+    price: 100
     )
   
   rand(0..1).times { story.ratings.create!(value: 1, user: users.sample) }

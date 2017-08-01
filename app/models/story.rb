@@ -3,7 +3,8 @@ class Story < ActiveRecord::Base
   has_many :collections, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :ratings, dependent: :destroy
-  after_create :check_achievement
+  #after_create :check_achievement
+  
   
   has_attached_file :cover,
   :storage => :s3,
@@ -21,6 +22,15 @@ class Story < ActiveRecord::Base
   validates :author, presence: true
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
   
+  enum tier: [:free, :paid]
+  after_initialize { 
+    if self.price == 0 || self.price.nil?
+      self.tier = :free
+    else
+      self.tier = :paid
+    end
+  }
+  
   def self.genres
     ['Fan fiction', 'Fantasy', 'Mystery', 'Romance', 
     'Sci-fi', 'Western', 'Horror']
@@ -35,5 +45,12 @@ class Story < ActiveRecord::Base
     user.award_badge('rookie') if stories == 1
     user.award_badge('contributor') if stories == 5
     user.award_badge('author') if stories == 10
+  end
+  
+  def self.by_tier_and_genre(tier = nil, genre = nil)
+    return where(tier: tier, genre: genre) if tier && genre
+    return where(tier: tier) if tier
+    return where(genre: genre) if genre
+    all
   end
 end

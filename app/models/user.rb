@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   
-  after_create :founder_badge
-  after_create :newcomer_badge
+  #after_create :founder_badge
+  #after_create :newcomer_badge
          
   has_many :stories
   has_many :comments

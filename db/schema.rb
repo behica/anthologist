@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728211605) do
+ActiveRecord::Schema.define(version: 20170731210135) do
 
   create_table "achievements", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,14 +68,16 @@ ActiveRecord::Schema.define(version: 20170728211605) do
     t.text     "body"
     t.string   "author"
     t.string   "genre"
-    t.boolean  "published",          default: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.boolean  "published",                                  default: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.integer  "user_id"
+    t.decimal  "price",              precision: 8, scale: 2
+    t.integer  "tier"
   end
 
   add_index "stories", ["user_id"], name: "index_stories_on_user_id"

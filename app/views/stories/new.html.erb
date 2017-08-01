@@ -25,6 +25,10 @@
           <%= f.text_area :body, rows: 16, class: 'form-control', placeholder: "Story text" %>
         </div>
         <div class="form-group">
+          <%= f.label :price %>
+          <%= f.number_field :price, class: 'form-control', placeholder: "0" %>
+        </div>
+        <div class="form-group">
           <%= f.label :genre %>
           <%= f.select :genre, @genres, prompt: "Choose a genre" %>
           <%= f.submit "Save", class: 'btn btn-success pull-right' %>
