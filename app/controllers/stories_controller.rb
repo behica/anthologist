@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    
+    @price = @story.price.to_i
   end
 
   def new

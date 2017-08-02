@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <!--<div class="navbar-header">-->
       <ul class="nav navbar-nav">
-        <li class="navbar-brand">Tier</li>
+        <li class="navbar-text">Tier</li>
         <li class="<%= 'active' if params[:tier].nil? %>"><%= link_to "All", stories_path(tier: nil, genre: params[:genre]) %></li>
         <% @tiers.map do |tier, value| %>
         <li class="<%= 'active' if params[:tier] == value.to_s %>">
@@ -11,7 +11,7 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-brand">Genre</li>
+        <li class="navbar-text">Genre</li>
         <li class="<%= 'active' if params[:genre].nil? %>"><%= link_to "All", stories_path(tier: params[:tier], genre: nil) %></li>
         <% @genres.each do |genre| %>
         <li class="<%= 'active' if params[:genre] == genre %>">

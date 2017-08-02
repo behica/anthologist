@@ -1,5 +1,5 @@
 <h1><%= @story.title %>
-<small>by <%= @story.author %> <%= @story.price %> <%= @story.tier %></small>
+<small>by <%= @story.author %> <%= number_to_currency(@price) %> <%= @story.tier %></small>
 </h1>
 
 <div class="row">
@@ -17,10 +17,13 @@
   <div class="col-md-4">
       <p><%= link_to "Edit", edit_story_path(@story), class: 'btn btn-success' %>
       <%= link_to "Delete", @story, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this story?'} %></p>
-    <% if current_user %>
-      <p><%= render partial: 'collections/collect', locals: { story: @story } %></p>
-      <p><%= render partial: 'ratings/rate', locals: { story: @story } %></p>
-    <% end %>
+      <% if current_user %>
+        <p><%= render partial: 'collections/collect', locals: { story: @story } %></p>
+        <p><%= render partial: 'ratings/rate', locals: { story: @story } %></p>
+      <% end %>
+      <% if @story.tier == 'paid' %>
+        <%= render 'charges/charge', story_id: @story.id %>
+      <% end %>
   </div>
 </div>
 

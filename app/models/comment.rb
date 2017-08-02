@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :story
   belongs_to :user
-  #after_create :check_achievement
+  after_create :check_achievement
   
   validates :body, length: { minimum: 5 }, presence: true
   validates :user, presence: true

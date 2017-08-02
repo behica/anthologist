@@ -1,7 +1,12 @@
 <h1>My Badges</h1>
-<h4><%= current_user.achievements.count %> badges earned.</h4>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @achievements.count %>" aria-valuemin="0" aria-valuemax="<%= Badge.count %>" style="width: <%= @progress %>%;">
+    <%= @progress %>% complete
+  </div>
+</div>
+<h4><%= @achievements.count %> of <%= Badge.count %> badges earned.</h4>
 <div class="row">
-  <% current_user.achievements.each do |achievement| %>
+  <% @achievements.each do |achievement| %>
     <div class="col-md-3 col-sm-4">
       <div class="thumbnail">
         <%= achievement.badge.name %>

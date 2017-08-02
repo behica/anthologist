@@ -3,7 +3,7 @@ class Story < ActiveRecord::Base
   has_many :collections, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :ratings, dependent: :destroy
-  #after_create :check_achievement
+  after_create :check_achievement
   
   
   has_attached_file :cover,
@@ -52,5 +52,9 @@ class Story < ActiveRecord::Base
     return where(tier: tier) if tier
     return where(genre: genre) if genre
     all
+  end
+  
+  def amount
+    price.to_i * 100
   end
 end

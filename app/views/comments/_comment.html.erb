@@ -1,8 +1,12 @@
 <div class="media">
   <div class="media-body">
-    <small>
-      <%= comment.user.email %> commented <%= time_ago_in_words(comment.created_at) %> ago
-    </small>
-    <p><%= comment.body %></p>
+    <% if @story.comments.empty? %>
+      <p>No comments yet</p>
+    <% else %>
+      <small>
+        <%= comment.user.email %> commented <%= time_ago_in_words(comment.created_at) %> ago
+      </small>
+      <p><%= comment.body %></p>
+    <% end %>
   </div>
 </div>

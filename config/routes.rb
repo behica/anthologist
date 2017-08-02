@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     post '/like' => 'ratings#like', as: :likes
   end
   
+  resources :charges
+  
   get 'collection' => 'collections#index'
   
   get 'achievement' => 'achievements#index'
