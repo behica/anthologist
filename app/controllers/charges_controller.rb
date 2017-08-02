@@ -1,12 +1,12 @@
 require 'stripe'
 class ChargesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_story
   
   def new
   end
   
   def create
+    @story = Story.find(params[:story_id])
     @amount = @story.price.to_i * 100
     
     customer = Stripe::Customer.create(
@@ -33,9 +33,5 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:alert] = e.message
       redirect_to new_charge_path
-  end
-  
-  def find_story
-    @story = Story.find(params[:story_id])
   end
 end

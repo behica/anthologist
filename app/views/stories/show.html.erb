@@ -16,10 +16,8 @@
       <% end %>
     </div>
     <div class="col-md-4">
-        <% #if current_user %>
-          <p><%= render partial: 'ratings/rate', locals: { story: @story } %></p>
-          <p><%= render partial: 'collections/collect', locals: { story: @story } %></p>
-        <% #end %>
+        <p><%= render partial: 'ratings/rate', locals: { story: @story } %></p>
+        <p><%= render partial: 'collections/collect', locals: { story: @story } %></p>
         <% if @story.tier == 'paid' %>
           <% if current_user && current_user.purchase?(@story) %>
             <h4><span class="label label-primary">Purchased</span></h4>
