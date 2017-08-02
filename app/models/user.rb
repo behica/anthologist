@@ -12,10 +12,14 @@ class User < ActiveRecord::Base
   has_many :collections, dependent: :destroy
   has_many :ratings, dependent: :destroy
   has_many :achievements, dependent: :destroy
-  
+  has_many :purchases
   
   def collection_check(story)
     collections.where(story_id: story.id).first
+  end
+  
+  def purchase?(story)
+    purchases.where(story_id: story.id).first
   end
   
   def award_badge(name)

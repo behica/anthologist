@@ -22,10 +22,16 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
     
+    purchase = current_user.purchases.build(story: @story)
+    purchase.save
+    
+    collection = current_user.collections.build(story: @story)
+    collection.save
+    
     #current_user.update(customer_id: customer.id)
     
     flash[:notice] = "Thank you for your purchase, #{current_user.email}!"
-    redirect_to stories_path
+    redirect_to @story
     
     rescue Stripe::CardError => e
       flash[:alert] = e.message
