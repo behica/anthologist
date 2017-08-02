@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :purchases
   
   def collection_check(story)
-    collections.where(story_id: story.id).first
+      collections.where(story_id: story.id).first
   end
   
   def purchase?(story)

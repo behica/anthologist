@@ -1,9 +1,15 @@
-<% if collect = current_user.collection_check(story) %>
-  <%= link_to [story, collect], class: 'btn btn-danger btn-xs', method: :delete do %>
-    <span class="glyphicon glyphicon-heart"> </span> Collected
+<% if user_signed_in? %>
+  <% if collect = current_user.collection_check(story) %>
+    <%= link_to [story, collect], class: 'btn btn-danger btn-xs', method: :delete do %>
+      <span class="glyphicon glyphicon-heart"> </span> Collected
+    <% end %>
+  <% else %>
+    <%= link_to [story, Collection.new], class: 'btn btn-default btn-xs', method: :story do %>
+      <span class="glyphicon glyphicon-heart-empty"> </span> Add to collection
+    <% end %>
   <% end %>
 <% else %>
   <%= link_to [story, Collection.new], class: 'btn btn-default btn-xs', method: :story do %>
-    <span class="glyphicon glyphicon-heart-empty"> </span> Add to collection
-  <% end %>
+      <span class="glyphicon glyphicon-heart-empty"> </span> Add to collection
+    <% end %>
 <% end %>
