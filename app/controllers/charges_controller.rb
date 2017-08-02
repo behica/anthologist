@@ -4,7 +4,6 @@ class ChargesController < ApplicationController
   before_action :find_story
   
   def new
-    
   end
   
   def create
@@ -27,8 +26,6 @@ class ChargesController < ApplicationController
     
     collection = current_user.collections.build(story: @story)
     collection.save
-    
-    #current_user.update(customer_id: customer.id)
     
     flash[:notice] = "Thank you for your purchase, #{current_user.email}!"
     redirect_to @story

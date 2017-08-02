@@ -1,28 +1,30 @@
 <br>
 <div class="jumbotron">
-  <h1>Shorties</h1>
-  <p>Shorties is your place to read, write, and collect short stories from our community.</p>
-  <% if user_signed_in? %>
-    <p>Welcome back.</p>
-  <% else %>
-    <p>
-      <%= link_to "Sign In", new_user_session_path %> or
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
-    </p>
-  <% end %>
+  <div class="container-fluid">
+    <h1 class="brand">Anthologist</h1>
+    <p>Read, write, and collect short stories from our community.</p>
+    <% if user_signed_in? %>
+      <p>Welcome back.</p>
+    <% else %>
+      <p>
+        <%= link_to "Sign In", new_user_session_path %> or
+        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %> today!
+      </p>
+    <% end %>
+  </div>
 </div>
-
+<div class="container">
 <div class="row">
   <div class="col-md-4">
     <h2 class="text-center"><%= link_to "Read", stories_path %></h2>
-    <p class="text-justify">Read short stories from our community of passionate writers. Whether you're looking for romance, a science-fiction escape, a spooky tale, or a combination of, you'll find it here.</p>
+    <p class="text-justify">Read short stories from our community of passionate writers. Whether you're looking for romance, a science-fiction escape, a spooky tale, or a combination of them all, you'll find it here.</p>
   </div>
   <div class="col-md-4">
     <h2 class="text-center"><%= link_to "Write", new_story_path %></h2>
-    <p class="text-justify">Write the stories you love to create. Share them with our community of readers for free, or request to get paid for your work. At Shorties, you control how your work is distributed.</p>
+    <p class="text-justify">Write the stories you love to think about. Share them with our community of readers for free, or request to get paid for your work. At Anthologist, you control how your work is distributed.</p>
   </div>
   <div class="col-md-4">
     <h2 class="text-center"><%= link_to "Collect", collection_path %></h2>
-    <p class="text-justify">Grow your short story collection. Earn badges and achievements as you discover original works, or write your own.</p>
+    <p class="text-justify">Grow your short story collection. Earn badges and achievements as you discover original works, or write your own. It's your anthology.</p>
   </div>
 </div>

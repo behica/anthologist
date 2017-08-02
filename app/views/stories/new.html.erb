@@ -1,49 +1,54 @@
-<h1>New Story</h1>
-
-<div class="row">
-  <div class="col-md-4">
-    <p>Story Guidelines</p>
-  </div>
-  <div class="col-md-8">
-    <%= form_for(@story, multipart: true) do |f| %>
-      <% if @story.errors.any? %>
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@story.errors.count, "error") %>.</h4>
-          <ul>
-            <% @story.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-        <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title, class: 'form-control', placeholder: "Story title" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :body %>
-          <%= f.text_area :body, rows: 16, class: 'form-control', placeholder: "Story text" %>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-6">
-            <%= f.label "Upload Cover Art" %>
-            <%= f.file_field :cover, class: 'form-control' %>
+<div class="container">
+  <h1>New Story</h1>
+  
+  <div class="row">
+    <div class="col-md-4">
+      <p>Story Guidelines</p>
+      <ul>
+        <li>Must be your original work.</li>
+        <li>Word count must be from 1,000-8,000 words.</li>
+        <li>Choose the genre that best suits your story.</li>
+        <li>Do not include personally identifialbe information about yourself or other persons.</li>
+        <li>Stories encouraging or promoting illegal acts, self-harm, discrimination, violence, hatred, bullying, etc., will be removed.</li>
+        <li>This is not an exhaustive list -- Please use proper judgement while expressing your creativity.</li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <%= form_for(@story, multipart: true) do |f| %>
+        <% if @story.errors.any? %>
+          <div class="alert alert-danger">
+            <h4><%= pluralize(@story.errors.count, "error") %>.</h4>
+            <ul>
+              <% @story.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
           </div>
-          <div class="form-group col-md-4">
-            <%= f.label :genre %>
-            <%= f.select :genre, options_for_select(@genres), {prompt: "Choose a genre"}, class: 'form-control'  %>
+        <% end %>
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control', placeholder: "Story title" %>
           </div>
-          <div class="form-group col-md-2">
-              <%= f.label :price %>
-              <%= f.number_field :price, class: 'form-control', placeholder: "Free" %>
+          <div class="form-group">
+            <%= f.label :body %>
+            <%= f.text_area :body, rows: 16, class: 'form-control', placeholder: "Story text" %>
           </div>
-        </div>
-        <%= f.submit "Save", class: 'btn btn-success' %>
-        <!--<div class="form-group">-->
-        <!--  <%= f.label :published, class: 'checkbox-inline' do %>-->
-        <!--    <%= f.check_box :published %><p class='bg-danger'> Publish - Story is submitted and cannot be edited! </p>-->
-        <!--  <% end %>-->
-        <!--</div>-->
-    <% end %>   
+          <div class="row">
+            <div class="form-group col-md-6">
+              <%= f.label "Upload Cover Art" %>
+              <%= f.file_field :cover, class: 'form-control' %>
+            </div>
+            <div class="form-group col-md-4">
+              <%= f.label :genre %>
+              <%= f.select :genre, options_for_select(@genres), {prompt: "Choose a genre"}, class: 'form-control'  %>
+            </div>
+            <div class="form-group col-md-2">
+                <%= f.label :price %>
+                <%= f.number_field :price, class: 'form-control', placeholder: "Free" %>
+            </div>
+          </div>
+          <%= f.submit "Save", class: 'btn btn-success' %>
+      <% end %>   
+    </div>
   </div>
 </div>

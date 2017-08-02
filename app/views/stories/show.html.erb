@@ -1,33 +1,32 @@
-<h1><%= @story.title %>
-<small>by <%= @story.author %></small>
-</h1>
-
-<div class="row">
-  <div class="col-md-8 text-justify">
-    <p><%= @story.body.html_safe %></p>
-    
-    <div>
-     <h3>Comments</h3>
-     <%= render @story.comments %>
-    </div>
-    <% if current_user %>
-      <%= render 'comments/form', comment: Comment.new, story: @story %>
-    <% end %>
-  </div>
-  <div class="col-md-4">
-      <p><%= link_to "Edit", edit_story_path(@story), class: 'btn btn-success' %>
-      <%= link_to "Delete", @story, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this story?'} %></p>
+<div class="container">
+  <h1><%= @story.title %>
+  <small>by <%= @story.author %></small>
+  </h1>
+  
+  <div class="row">
+    <div class="col-md-8 text-justify">
+      <p><%= @story.body.html_safe %></p>
+      
+      <div>
+       <h3>Comments</h3>
+       <%= render @story.comments %>
+      </div>
       <% if current_user %>
-        <p><%= render partial: 'collections/collect', locals: { story: @story } %></p>
-        <p><%= render partial: 'ratings/rate', locals: { story: @story } %></p>
+        <%= render 'comments/form', comment: Comment.new, story: @story %>
       <% end %>
-      <% if @story.tier == 'paid' %>
-        <% if current_user && current_user.purchase?(@story) %>
-          <h4><span class="label label-info">Purchased</span></h4>
-        <% else %>
-          <%= render 'charges/charge', story_id: @story.id %>
+    </div>
+    <div class="col-md-4">
+        <% if current_user %>
+          <p><%= render partial: 'ratings/rate', locals: { story: @story } %></p>
+          <p><%= render partial: 'collections/collect', locals: { story: @story } %></p>
         <% end %>
-      <% end %>
+        <% if @story.tier == 'paid' %>
+          <% if current_user && current_user.purchase?(@story) %>
+            <h4><span class="label label-primary">Purchased</span></h4>
+          <% else %>
+            <%= render 'charges/charge', story_id: @story.id %>
+          <% end %>
+        <% end %>
+    </div>
   </div>
 </div>
-

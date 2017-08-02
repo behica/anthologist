@@ -29,6 +29,19 @@ class User < ActiveRecord::Base
     end
   end
   
+  def unearned_achievements
+    if self.achievements.nil?
+      unearned_badges = Badge.all
+    else
+      unearned_badges = []
+      Badge.all.each do |badge|
+      unearned_badges << badge unless self.achievements.find_by_badge_id(badge.id)
+      end
+      unearned_badges.shift
+    end
+    unearned_badges
+  end
+  
   def founder_badge
     award_badge('founder') if id <= 100
   end

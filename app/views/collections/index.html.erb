@@ -1,17 +1,20 @@
-<h1>My Collection</h1>
-<div class="row">
-<% if @user_collections.empty? %>
-  <p>You have not added any items to your collection yet.</p>
-<% else %>
-  <% @user_collections.each do |collection| %>
-    <div class="col-md-3 col-sm-4">
-      <div class="thumbnail">
-        <%= link_to image_tag(collection.story.cover.url(:thumb)), collection.story, title: collection.story.title %>
-        <div class="caption text-center">
-          <%= link_to truncate(collection.story.title), collection.story, title: collection.story.title %>
+<div class="container">
+  <h1>My Collection</h1>
+  </br>
+  <div class="row">
+  <% if @user_collections.empty? %>
+    <p>You have not added any items to your collection yet.</p>
+  <% else %>
+    <% @user_collections.each do |collection| %>
+      <div class="col-md-3 col-sm-4">
+        <div class="thumbnail">
+          <%= link_to image_tag(collection.story.cover.url(:thumb)), collection.story, title: collection.story.title %>
+          <div class="caption text-center">
+            <%= link_to truncate(collection.story.title), collection.story, title: collection.story.title %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
 </div>
