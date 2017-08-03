@@ -50,7 +50,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     
     if @story.destroy
-      flash[:notice] = #{@story.title} "was deleted"
+      flash[:notice] = "#{@story.title} was deleted"
       redirect_to stories_path
     else
       flash.now[:alert] = "There was an error deleting the story."

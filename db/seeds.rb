@@ -14,7 +14,7 @@ Badge.create!(name: 'commentator', description: 'Leave 10 comments')
 Badge.create!(name: 'pundit', description: 'Leave 25 comments')
 Badge.create!(name: 'rookie', description: 'Write a story')
 Badge.create!(name: 'contributor', description: 'Write 5 stories')
-Badge.create!(name: 'Author', description: 'Write 10 stories')
+Badge.create!(name: 'author', description: 'Write 10 stories')
 
 user1 = User.new(
   email:                  'admin@example.com',
