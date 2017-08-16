@@ -23,6 +23,7 @@ class StoriesController < ApplicationController
     @story.user = current_user
     
     if @story.save
+      check_achievement
       redirect_to @story, notice: "Your story has been saved."
     else
       flash.now[:alert] = "Something went wrong creating your story. Please try again."
@@ -62,5 +63,12 @@ class StoriesController < ApplicationController
   
   def story_params
     params.require(:story).permit(:title, :body, :genre, :published, :cover, :user, :price, :tier)
+  end
+  
+  def check_achievement
+    stories = current_user.stories.count
+    current_user.award_badge('rookie') if stories == 1
+    current_user.award_badge('contributor') if stories == 5
+    current_user.award_badge('author') if stories == 10
   end
 end

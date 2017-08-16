@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   after_create :newcomer_badge
          
   has_many :stories
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :collections, dependent: :destroy
   has_many :ratings, dependent: :destroy
   has_many :achievements, dependent: :destroy

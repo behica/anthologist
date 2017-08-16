@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
     comment.user = current_user
     
     if comment.save
-      redirect_to @story, notice: "Your comment has been added."
+      check_achievement
+      flash[:notice] = "Your comment has been added."
+      redirect_to @story
     else
       flash.now[:alert] = "Something went wrong adding your comment. Please try again."
       redirect_to @story
@@ -30,5 +32,12 @@ class CommentsController < ApplicationController
   
   def comment_params
     params.require(:comment).permit(:body)
+  end
+  
+  def check_achievement
+    comments = current_user.comments.count
+    current_user.award_badge('peanut') if comments == 1
+    current_user.award_badge('commentator') if comments == 10
+    current_user.award_badge('pundit') if comments == 25
   end
 end

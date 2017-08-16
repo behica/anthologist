@@ -1,41 +1,43 @@
-</br>
 <div class="container">
-<div class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li class="navbar-text">Tier</li>
-      <li class="<%= 'active' if params[:tier].nil? %>"><%= link_to "All", stories_path(tier: nil, genre: params[:genre]) %></li>
-      <% @tiers.map do |tier, value| %>
-      <li class="<%= 'active' if params[:tier] == value.to_s %>">
-        <%= link_to tier.capitalize, stories_path(tier: value, genre: params[:genre]) %></li>
-      <% end %>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-text">Genre</li>
-      <li class="<%= 'active' if params[:genre].nil? %>"><%= link_to "All", stories_path(tier: params[:tier], genre: nil) %></li>
-      <% @genres.each do |genre| %>
-      <li class="<%= 'active' if params[:genre] == genre %>">
-        <%= link_to genre, stories_path(genre: genre, tier: params[:tier])  %>
-      <% end %>
-      </li>
-    </ul>
+  <div class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="navbar-text">Tier</li>
+        <li class="<%= 'active' if params[:tier].nil? %>"><%= link_to "All", stories_path(tier: nil, genre: params[:genre]) %></li>
+        <% @tiers.map do |tier, value| %>
+        <li class="<%= 'active' if params[:tier] == value.to_s %>">
+          <%= link_to tier.capitalize, stories_path(tier: value, genre: params[:genre]) %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="navbar-text">Genre</li>
+        <li class="<%= 'active' if params[:genre].nil? %>"><%= link_to "All", stories_path(tier: params[:tier], genre: nil) %></li>
+        <% @genres.each do |genre| %>
+        <li class="<%= 'active' if params[:genre] == genre %>">
+          <%= link_to genre, stories_path(genre: genre, tier: params[:tier])  %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
-<br>
-<div class="row">
-  <% @stories.each do |story| %>
-    <div class="col-md-3 col-sm-4">
+
+<% @stories.each_slice(3) do |stories| %>
+  <div class="row">
+    <% stories.each do |story| %>
+    <div class="col-md-4 col-xs-4">
       <div class="thumbnail">
         <%= link_to image_tag(story.cover.url(:thumb)), story, title: story.title %>
-        <div class="caption text-center">
-          <p><%= link_to truncate(story.title, length: 25), story, title: story.title %></p>
+        <div class="caption">
+          <p><%= link_to story.title, story, title: story.title, class: "story-title text-center" %></p>
           <% if current_user %>
-            <p><%= render partial: 'collections/collect', class: 'pull-right', locals: { story: story } %></p>
-            <p><b><%= story.ratings.count %></b> <%= 'like'.pluralize(story.ratings.count) %></p>
+          <div class="text-center">
+            <%= render partial: 'collections/collect', locals: { story: story } %> | <b><%= story.ratings.count %></b><span class="hidden-xs"> <%= 'like'.pluralize(story.ratings.count) %></span>
+          </div>
           <% end %>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
 </div>

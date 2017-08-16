@@ -2,34 +2,51 @@
 <html>
 <head>
   <title>Anthologist</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <ul class="nav nav-tabs">
-    <li class="brand"><span>Anthologist</span></li>
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Read", stories_path %></li>
-    <li><%= link_to "Write", new_story_path %></li>
-    <li><%= link_to "Collection", collection_path %></li>
-    <% if user_signed_in? %>
-      <li class="pull-right dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle" role="presentation"><%= current_user.email %> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Achievements', achievement_path, :class => 'navbar-link' %></li>
-            <li><%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-          </ul>
-    <% else %>
-      <ul class="pull-right user-signin">
-        <%= link_to 'Sign In', new_user_session_path, :class => 'navbar-link' %> | 
-        <%= link_to 'Sign Up', new_user_registration_path, :class => 'navbar-link' %>
-      </ul>
-    <% end %>
-  </ul>
-  <% if flash[:notice] %>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle grouping -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Anthologist", root_path, class: "navbar-brand" %>
+        </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Read", stories_path %></li>
+          <li><%= link_to "Write", new_story_path %></li>
+          <li><%= link_to "Collection", collection_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Achievements', achievement_path %></li>
+              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        </ul>
+        <% else %>
+          <li><%= link_to 'Sign In', new_user_session_path %></li> 
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+    <% if flash[:notice] %>
       <div class="alert alert-success text-center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <%= flash[:notice] %>
@@ -40,15 +57,13 @@
         <%= flash[:alert] %>
       </div>
     <%end%>
-  
   <%= yield %>
-  
-<script>
-$('document').ready(function() {
-  setTimeout(function() {
-    $('.alert').slideUp();
-  }, 2000);
-});
-</script>
+  <script>
+  $('document').ready(function() {
+    setTimeout(function() {
+      $('.alert-success').slideUp();
+    }, 2500);
+  });
+  </script>
 </body>
 </html>

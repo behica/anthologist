@@ -13,14 +13,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Marcellus');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-html {overflow-y: scroll; }
+body {font-family: 'Open Sans', sans-serif;}
 
-.nav-tabs {margin-top: 5px;}
-.user-signin {margin-top: 10px; padding-right: 10px;}
-.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important; }
-.brand {padding-top: 0px !important; padding-left: 10px; padding-right: 10px !important; font-family: 'Marcellus', serif; font-size: 1.75em;}
-.navbar-text {font-weight: bold; margin-bottom: 0px !important; margin-top: 0px !important; padding-top: 5px !important; margin-left: 0px !important; height: 30px !important; }
-.navbar {min-height:32px !important}
+@media (max-width: 768px) {
+    body{font-size: 12px;}
+}
+
+// @media (max-width: 970px) {
+//     body{font-size: 12px;}
+// }
+
+.navbar-brand { font-family: 'Marcellus', serif; font-size: 1.5em;}
 .jumbotron {text-align: center;}
-.jumbotron .brand {font-family: 'Marcellus', serif;}
+.jumbotron .headline {font-family: 'Marcellus', serif;}
+.col-md-4 i {display: block; text-align: center;}
+.col-md-4 {height: 100%;}
+.large-icon {font-size: 75px;}
+.story-title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;}

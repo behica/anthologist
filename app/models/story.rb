@@ -4,7 +4,7 @@ class Story < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :ratings, dependent: :destroy
   has_many :purchases
-  after_create :check_achievement
+  # after_create :check_achievement
   
   has_attached_file :cover,
   :storage => :s3,
@@ -40,12 +40,12 @@ class Story < ActiveRecord::Base
     ratings.where(value: 1).count
   end
   
-  def check_achievement
-    stories = user.stories.count
-    user.award_badge('rookie') if stories == 1
-    user.award_badge('contributor') if stories == 5
-    user.award_badge('author') if stories == 10
-  end
+  # def check_achievement
+  #   stories = user.stories.count
+  #   user.award_badge('rookie') if stories == 1
+  #   user.award_badge('contributor') if stories == 5
+  #   user.award_badge('author') if stories == 10
+  # end
   
   def self.by_tier_and_genre(tier = nil, genre = nil)
     return where(tier: tier, genre: genre) if tier && genre
