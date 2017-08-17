@@ -13,8 +13,8 @@ var fadeInHero = function(){
 }
 
 $(document).on('turbolinks:load', function() {
+    fadeInHero();
     if($(window).height() > 950) {
-    	fadeInHero();
         setTimeout(function(){
         	animatePoints();}, 750)
     }
