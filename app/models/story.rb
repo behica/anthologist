@@ -8,6 +8,7 @@ class Story < ActiveRecord::Base
   
   has_attached_file :cover,
   :storage => :s3,
+  :s3_protocol => :https,
   :url => ":s3_domain_url",
   :path => '/:class/:attachment/:id_partition/:style/:filename',
   styles: {
