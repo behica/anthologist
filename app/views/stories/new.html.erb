@@ -31,7 +31,7 @@
           </div>
           <div class="form-group">
             <%= f.label :body %>
-            <%= f.text_area :body, rows: 16, class: 'form-control', placeholder: "Story text" %>
+            <%= f.text_area :body, rows: 16, class: 'form-control', id: 'body', placeholder: "Story text" %>
           </div>
           <div class="row">
             <div class="form-group col-md-6">
@@ -43,8 +43,9 @@
               <%= f.select :genre, options_for_select(Story.genres), {prompt: "Choose a genre"}, class: 'form-control'  %>
             </div>
             <div class="form-group col-md-2">
-                <%= f.label :price %>
-                <%= f.number_field :price, class: 'form-control', placeholder: "Free" %>
+                <%= f.label :word_count %>
+                <span class="form-control" id="words"></span>
+                
             </div>
           </div>
           <%= f.submit "Save", class: 'btn btn-success' %>

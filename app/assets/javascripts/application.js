@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    setTimeout(function() {
+      $('.alert-success').slideUp();
+    }, 2500);
+  });

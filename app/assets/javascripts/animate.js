@@ -16,4 +16,7 @@ $(document).on('turbolinks:load', function() {
   fadeInHero();
   setTimeout(function(){
     animatePoints();}, 500)
+  setTimeout(function() {
+      $('.alert-success').slideUp();
+  }, 2500);
 });

@@ -69,12 +69,6 @@
       </div>
     <%end%>
   <%= yield %>
-  <script>
-  $(document).on('turbolinks:load', function() {
-    setTimeout(function() {
-      $('.alert-success').slideUp();
-    }, 2500);
-  });
-  </script>
+
 </body>
 </html>
