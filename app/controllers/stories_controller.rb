@@ -19,7 +19,7 @@ class StoriesController < ApplicationController
   
   def create
     @story = Story.new(story_params)
-    @story.author = current_user.email
+    @story.author = current_user.username
     @story.user = current_user
     
     if @story.save

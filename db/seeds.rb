@@ -1,9 +1,9 @@
 require 'devise'
 Badge.create!(name: 'founder', description: 'First 100 Accounts')
 Badge.create!(name: 'newcomer', description: 'Create a new account')
-Badge.create!(name: 'critic', description: 'Like a story')
-Badge.create!(name: 'analyst', description: 'Like 5 stories')
-Badge.create!(name: 'reviewer', description: 'Like 20 stories')
+Badge.create!(name: 'thumb-up', description: 'Like a story')
+Badge.create!(name: 'reviewer', description: 'Like 5 stories')
+Badge.create!(name: 'critic', description: 'Like 20 stories')
 Badge.create!(name: 'all-thumbs', description: 'Like 100 stories')
 Badge.create!(name: 'got-one', description: 'Collect a story')
 Badge.create!(name: 'fancier', description: 'Collect 5 stories')
@@ -18,6 +18,7 @@ Badge.create!(name: 'author', description: 'Write 10 stories')
 
 if Rails.env.development?
   user1 = User.new(
+    username:               'admin',
     email:                  'admin@example.com',
     password:               'helloworld',
     password_confirmation:  'helloworld'
@@ -26,6 +27,7 @@ if Rails.env.development?
   user1.save!
   
   user2 = User.new(
+    username:               'member',
     email:                  'member@example.com',
     password:               'helloworld',
     password_confirmation:  'helloworld'

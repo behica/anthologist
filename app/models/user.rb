@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :achievements, dependent: :destroy
   has_many :purchases
   
+  validates :username, :presence => true, :uniqueness => {:case_sensitive => false}
+  
   def collection_check(story)
       collections.where(story_id: story.id).first
   end
