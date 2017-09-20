@@ -1,10 +1,11 @@
 <div class="container">
-  <h1><%= @story.title %>
-  <small>by <%= @story.author %></small>
+  <h1 class="text-center"><%= @story.title %>
+  <small>by <%= link_to @story.author, user_path(@user) %></small>
   </h1>
   <hr>
   <div class="row">
-    <div class="col-md-8 text-justify">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 text-justify">
       <p><%= @story.body.html_safe %></p>
       
       <div>
@@ -16,7 +17,7 @@
         <%= render 'comments/form', comment: Comment.new, story: @story %>
       <% end %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <p><%= render partial: 'ratings/rate', locals: { story: @story } %></p>
         <p><%= render partial: 'collections/collect', locals: { story: @story } %></p>
         <% if @story.tier == 'paid' %>

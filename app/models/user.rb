@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     purchases.where(story_id: story.id).first
   end
   
+  def to_param
+    username
+  end
+  
   def award_badge(name)
     badge = Badge.find_by_name(name)
     unless self.achievements.find_by_badge_id(badge.id)

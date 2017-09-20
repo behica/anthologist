@@ -2,17 +2,6 @@
   <h1>New Story</h1>
   
   <div class="row">
-    <div class="col-md-4">
-      <p>Story Guidelines</p>
-      <ul>
-        <li>Must be your original work.</li>
-        <li>Word count must be from 1,000-8,000 words.</li>
-        <li>Choose the genre that best suits your story.</li>
-        <li>Do not include personally identifialbe information about yourself or other persons.</li>
-        <li>Stories encouraging or promoting illegal acts, self-harm, discrimination, violence, hatred, bullying, etc., will be removed.</li>
-        <li>This is not an exhaustive list -- Please use proper judgement while expressing your creativity.</li>
-      </ul>
-    </div>
     <div class="col-md-8">
       <%= form_for(@story, multipart: true) do |f| %>
         <% if @story.errors.any? %>
@@ -50,6 +39,17 @@
           </div>
           <%= f.submit "Save", class: 'btn btn-success' %>
       <% end %>   
+    </div>
+    <div class="col-md-4">
+      <h3>Story Guidelines</h3>
+      <ul>
+        <li>Must be your original work.</li>
+        <li>Word count must be from 1,000-8,000 words.</li>
+        <li>Choose the genre that best suits your story.</li>
+        <li>Do not include personally identifialbe information about yourself or other persons.</li>
+        <li>Stories encouraging or promoting illegal acts, self-harm, discrimination, violence, hatred, bullying, etc., will be removed.</li>
+        <li>This is not an exhaustive list -- Please use proper judgement while expressing your creativity.</li>
+      </ul>
     </div>
   </div>
 </div>

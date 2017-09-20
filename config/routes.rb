@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   
   resources :charges
   
+  resources :users, only: [:show]
+  
   get 'collection' => 'collections#index'
   
   get 'achievement' => 'achievements#index'
