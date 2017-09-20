@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   
   resources :charges
   
-  # resources :users, only: [:show]
+  resources :users
   
   get 'collection' => 'collections#index'
   
