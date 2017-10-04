@@ -136,6 +136,17 @@ body {font-family: 'Open Sans', sans-serif; background-color: #F5F3EE; padding-b
 	display: -webkit-box;
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;}
+	
+.story-body {
+  font-size: 1em;
+  padding: 20px 30px;
+  background-color: #FFF;
+}
+
+hr {
+  background-color: #666;
+  height: 2px;
+}
 
 .navbar-default {
   background-color: #83001e;
