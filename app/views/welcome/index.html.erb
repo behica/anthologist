@@ -17,17 +17,17 @@
 <div class="container text-center selling-points">
   <div class="row">
     <div class="col-md-4 points">
-      <div class="glyphicon-ring"><span class="large-icon glyphicon glyphicon-book glyphicon-bordered"></span></div>
+      <%= link_to '<div class="glyphicon-ring"><span class="glyphicon glyphicon-book glyphicon-bordered"></span></div>'.html_safe, stories_path %>
       <h2 class="text-center"><%= link_to "Read", stories_path %></h2>
-      <p>Read short stories from our community of passionate writers. Whether you're looking for romance, a science-fiction escape, a spooky tale, or a combination of them all, you'll find it here.</p>
+      <p>Read short stories from our community of passionate writers. Whether you're looking for romance, a science-fiction escape, or a spooky tale, you'll find it here.</p>
     </div>
     <div class="col-md-4 points">
-      <div class="glyphicon-ring"><span class="glyphicon glyphicon-pencil glyphicon-bordered"></span></div>
+      <%= link_to '<div class="glyphicon-ring"><span class="glyphicon glyphicon-pencil glyphicon-bordered"></span></div>'.html_safe, new_story_path %>
       <h2 class="text-center"><%= link_to "Write", new_story_path %></h2>
-      <p>Write the stories you love to think about. Share them with our community of readers for free, or request to get paid for your work <em>(coming soon)</em>. At Anthologist, you control how your work is distributed.</p>
+      <p>Write the stories you love to think about. Share them with our community of readers. At Anthologist, you control how your work is distributed.</p>
     </div>
     <div class="col-md-4 points">
-      <div class="glyphicon-ring"><i class="large-icon glyphicon glyphicon-tasks glyphicon-bordered"></i></div>
+      <%= link_to '<div class="glyphicon-ring"><span class="glyphicon glyphicon-tasks glyphicon-bordered"></span></div>'.html_safe, collection_path %>
       <h2 class="text-center"><%= link_to "Collect", collection_path %></h2>
       <p>Grow your short story collection. Earn badges and achievements as you discover original works, or write your own. It's your anthology.</p>
     </div>
