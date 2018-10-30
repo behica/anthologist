@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :achievement do
     user nil
     badge nil
