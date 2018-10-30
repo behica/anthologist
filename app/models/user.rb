@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   def award_badge(name)
     badge = Badge.find_by_name(name)
     unless self.achievements.find_by_badge_id(badge.id)
-      self.achievements.create(badge: badge)
+     self.achievements.create(badge: badge)
     end
   end
   
